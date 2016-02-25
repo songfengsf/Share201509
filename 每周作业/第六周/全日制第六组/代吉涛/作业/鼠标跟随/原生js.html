@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body, div, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            display: block;
+            border: none;
+        }
+
+        .box {
+            position: relative;
+            margin: 20px auto;
+            width: 450px;
+        }
+
+        .box img {
+            float: left;
+            margin-left: 10px;
+            width: 100px;
+            height: 75px;
+            border: 1px solid #008000;
+            cursor: pointer;
+        }
+
+        #mark {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            width: 400px;
+            height: 300px;
+            border: 1px solid #0077B0;
+        }
+
+        #mark img {
+            float: inherit;
+            margin-left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="box" id="box">
+    <img class = "a" src="img/apple_1.jpg" bigImg="img/apple_1_bigger.jpg"/>
+    <img class = "a" src="img/apple_2.jpg" bigImg="img/apple_2_bigger.jpg"/>
+    <img class = "a" src="img/apple_3.jpg" bigImg="img/apple_3_bigger.jpg"/>
+    <img class = "a" src="img/apple_4.jpg" bigImg="img/apple_4_bigger.jpg"/>
+    <div id="mark">
+        <img src=""/>
+    </div>
+</div>
+<script type="text/javascript">
+    var box=document.getElementById("box");
+    var mark=document.getElementById("mark");
+    var boxLeft=box.offsetLeft,boxTop=box.offsetTop;
+    box.onmouseover=function(e) {
+        if(e.target.className == "a") {
+            e = e || window.event;
+            e.target = e.target || e.srcElement;
+            mark.style.display = "block";
+            mark.style.left = e.clientX - boxLeft + 10 + "px";
+            mark.style.top = e.clientY - boxTop + 10 + "px";
+            var img = mark.getElementsByTagName("img")[0];
+            img.src = e.target.getAttribute("bigImg");
+        }
+    };
+    box.onmousemove=function(e){
+        e=e||window.event;
+        mark.style.left = e.clientX - boxLeft + 10 + "px";
+        mark.style.top = e.clientY - boxTop + 10 + "px";
+    };
+    box.onmouseout=function(e){
+        e=e||window.event;
+        mark.style.display="none";
+    }
+</script>
+</body>
+</html>

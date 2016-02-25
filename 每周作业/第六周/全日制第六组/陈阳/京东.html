@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei";
+            font-size: 14px;
+        }
+
+        .Box {
+            border: 1px solid blue;
+            margin: 20px auto;
+            width: 1200px;
+            height: 500px;
+        }
+
+        .Box #leftBox {
+            display: inline-block;
+            margin: 20px auto;
+            width: 1200px;
+            height: 500px;
+        }
+
+        .Box #leftBox ul {
+            float: left;
+        }
+
+        .Box #leftBox ul li {
+            width: 212px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #c81623;
+            list-style: none;
+            position: relative;
+        }
+
+        .Box #leftBox ul li span {
+            color: #fcf3f3;
+            width: 212px;
+        }
+
+        .Box #leftBox ul li .one {
+            width: 8px;
+            position: absolute;
+            left: 185px;
+        }
+
+        #leftBox .select {
+            display: block;
+            background-color: blue;
+        }
+
+        #leftBox ul li div {
+            display: none;
+            width: 900px;
+            height: 451px;
+            line-height: 150px;
+            text-align: center;
+            position: absolute;
+            left: 212px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="Box">
+    <div id="leftBox">
+        <ul class="ul1">
+            <li class="select"><span>家用电器</span><span class="one">></span>
+
+                <div class="select">1</div>
+            </li>
+            <li><span>手机、数码、京东通信</span><span class="one">></span>
+
+                <div>2</div>
+            </li>
+            <li><span>电脑、办公</span><span class="one">></span>
+
+                <div>3</div>
+            </li>
+            <li><span>家居、家具、加装、厨具</span><span class="one">></span>
+
+                <div>4</div>
+            </li>
+            <li><span>男装、女装、内衣、珠宝</span><span class="one">></span>
+
+                <div>5</div>
+            </li>
+            <li><span>个户化妆、清洁用品</span><span class="one">></span>
+
+                <div>6</div>
+            </li>
+            <li><span>鞋靴、箱包、钟表、奢侈品</span><span class="one">></span>
+
+                <div>7</div>
+            </li>
+            <li><span>运动户外</span><span class="one">></span>
+
+                <div>8</div>
+            </li>
+            <li><span>汽车、汽车用品</span><span class="one">></span>
+
+                <div>9</div>
+            </li>
+            <li><span>母婴、玩具乐器</span><span class="one">></span>
+
+                <div>10</div>
+            </li>
+            <li><span>食品、酒类、生鲜、特产</span><span class="one">></span>
+
+                <div>11</div>
+            </li>
+            <li><span>营养保健</span><span class="one">></span>
+
+                <div>12</div>
+            </li>
+            <li><span>图书、音像、电子书</span><span class="one">></span>
+
+                <div>13</div>
+            </li>
+            <li><span>彩票、旅游、充值、票务</span><span class="one">></span>
+
+                <div>14</div>
+            </li>
+            <li><span>理财、众筹、白条、保险</span><span class="one">></span>
+
+                <div>15</div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var leftBox = document.getElementById("leftBox"), ul1 = leftBox.getElementsByTagName("ul")[0], oLis = ul1.getElementsByTagName("li"), oDivs = ul1.getElementsByTagName("div");
+    console.log(oLis);
+
+    (function () {
+        for (var k = 0; k < oDivs.length; k++) {
+            oDivs[k].style.top = -30 * k + "px";
+            oDivs[k].className = "null";
+        }
+
+        function tabChange(curIndex) {
+            for (var i = 0; i < oLis.length; i++) {
+                oLis[i].className = null;
+                oDivs[i].className = null;
+            }
+
+            oLis[curIndex].className = "select";
+            oDivs[curIndex].className = "select";
+        }
+
+        for (var i = 0; i < oLis.length; i++) {
+            oLis[i].zhuFeng = i;
+            oLis[i].onmouseover = function () {
+                this.style.backgroundColor = "blue";
+                tabChange(this.zhuFeng);
+            };
+            oLis[i].onmouseout = function () {
+                this.style.backgroundColor = "#c81623";
+                tabChange(this.zhuFeng);
+            };
+        }
+
+    })();
+
+
+</script>
+</body>
+</html>

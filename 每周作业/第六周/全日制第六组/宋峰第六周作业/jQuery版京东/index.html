@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+</head>
+<body>
+<div class="box">
+    <div class="leftList" id="leftList">
+        <ul>
+            <li><a href="">家用电器</a><span></span><div class="div1">1</div></li>
+            <li><a href="">手机、数码、京东通信</a><span></span><div class="div1">2</div></li>
+            <li><a href="">电脑、办公</a><span></span><div class="div1">3</div></li>
+            <li><a href="">家居、家具、家装、厨具</a><span></span><div class="div1">4</div></li>
+            <li><a href="">男装、女装、内衣、珠宝</a><span></span><div class="div1">5</div></li>
+            <li><a href="">个户化妆、清洁用品</a><span></span><div class="div1">6</div></li>
+            <li><a href="">鞋靴、箱包、钟表、奢侈品</a><span></span><div class="div1">7</div></li>
+            <li><a href="">运送户外</a><span></span><div class="div1">8</div></li>
+            <li><a href="">汽车、汽车用品</a><span></span><div class="div1">9</div></li>
+            <li><a href="">母婴、玩具乐器</a><span></span><div class="div1">10</div></li>
+            <li><a href="">食品、酒类、生鲜、特产</a><span></span><div class="div1">11</div></li>
+            <li><a href="">营养保健</a><span></span><div class="div1">12</div></li>
+            <li><a href="">图书、音像、电子书</a><span></span><div class="div1">13</div></li>
+            <li><a href="">彩票、旅行、充值、票务</a><span></span><div class="div1">14</div></li>
+            <li><a href="">理财、众筹、白条、保险</a><span></span><div class="div1">15</div></li>
+        </ul>
+    </div>
+    <div class="outer">
+        <div class="inner" id="inner">
+           <!-- <div><img src="img/lb1.jpg" alt=""/></div>
+            <img src="img/lb2.jpg" alt=""/>
+            <img src="img/lb3.jpg" alt=""/>
+            <img src="img/lb4.jpg" alt=""/>
+            <img src="img/lb5.jpg" alt=""/>
+            <img src="img/lb6.jpg" alt=""/>
+            <img src="img/lb1.jpg" alt=""/>-->
+            <div><img src="img/lb1.jpg" alt=""/></div>
+            <div><img src="img/lb2.jpg" alt=""/></div>
+            <div><img src="img/lb3.jpg" alt=""/></div>
+            <div><img src="img/lb4.jpg" alt=""/></div>
+            <div><img src="img/lb5.jpg" alt=""/></div>
+            <div><img src="img/lb6.jpg" alt=""/></div>
+            <div><img src="img/lb1.jpg" alt=""/></div>
+        </div>
+        <ul class="tip" id="tip">
+            <li class="bg">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+        <a href="javascript:;" class="btnLeft"></a>
+        <a href="javascript:;" class="btnRight"></a>
+    </div>
+</div>
+    <script type="text/javascript" src="js/animate.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        var div1=document.getElementById("leftList"),list=div1.getElementsByTagName("li"),oDiv=div1.getElementsByTagName("div");
+        console.log(oDiv);
+        for(var i=0;i<oDiv.length;i++){
+            oDiv[i].style.top=-30*i
+        }
+
+
+
+        for(var i=0;i<list.length;i++){
+            var curList=list[i];
+            curList.index=i;
+            list[i].onmouseover=function(){
+                oDiv[this.index].style.top=-30*this.index+"px";
+                oDiv[this.index].style.display="block"
+            }
+        }
+        for(var i=0;i<list.length;i++){
+            var curList=list[i];
+            curList.index=i;
+            list[i].onmouseout=function(){
+                oDiv[this.index].style.top=-30*i+"px"
+                oDiv[this.index].style.display="none"
+            }
+        }
+       ~function(){
+           var step= 0,count=6;
+           var $inner=$("#inner"),$tip=$("#tip"),$tipList=$tip.children("li");
+           var autoTimer=window.setInterval(autoMove,2000);
+
+           function autoMove(){
+               step++;
+               if(step>count){
+                   $inner.css("left",0);
+                   step=1
+               }
+               $inner.stop().animate({left:-step*730},500);
+               changeTip();
+           }
+
+           function changeTip(){
+               var temp=step;
+               temp>=count?temp=0:null;
+               $tipList.each(function(index,item){
+                   index===temp?$(this).addClass("bg"):$(this).removeClass("bg")
+               });
+           }
+
+           $tipList.bind("click",function(){
+               window.clearInterval(autoTimer);
+
+               step=$(this).index();
+               $inner.stop().animate({left:-step*730},500);
+               changeTip();
+
+               autoTimer=window.setInterval(autoMove,2000);
+           })
+
+           $(".outer>a").click(function(){
+               window.clearInterval(autoTimer);
+//               console.log($(".outer>a"));
+               if($(this).index()===2){
+//                   console.log($(this).index());
+                   step--;
+                   if(step<0){
+                       $inner.css("left",-count*730);
+                       step=count-1;
+                   }
+                   $inner.stop().animate({left:-step*730},500);
+                   changeTip();
+               }else{
+                   autoMove();
+               }
+               autoTimer=window.setInterval(autoMove,2000);
+           })
+
+       }();
+
+
+    </script>
+</body>
+</html>

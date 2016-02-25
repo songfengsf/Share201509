@@ -1,0 +1,111 @@
+*{
+    font-family: "Î¢ÈíÑÅºÚ";
+}
+.box{
+    margin: 0 auto;
+    width: 1200px;
+}
+.box .leftList{
+    float: left;
+    width: 209px;
+    background-color:#c81623 ;
+    border-bottom: 1px solid #c81623;
+    border-left:1px solid #c81623 ;
+}
+.box .leftList ul li{
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    padding:0 10px;
+    cursor: pointer;
+}
+.box .leftList ul li span{
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border: 1px solid ;
+    border-color:white white transparent transparent;
+    transform: rotate(45deg);
+}
+.box .leftList ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+
+}
+.box .leftList ul li:hover{
+    background-color: white;
+}
+.box .leftList ul li:hover a{
+    color: black;
+}
+.box .leftList ul li .div1{/*div1ÊÇ×ó²àÒþ²ØµÄ*/
+    position: absolute;
+    left: 210px;
+    width: 1000px;
+    height: 485px;
+    background-color: #f7f7f7;
+    display: none;
+    z-index: 2;
+}
+/*  ÂÖ²¥Í¼  */
+.outer{
+    position: relative;
+    float: right;
+    width: 730px;
+    height: 454px;
+    overflow: hidden;
+}
+.inner{
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 5110px;
+    height: 454px;
+}
+.inner div{
+    float: left;
+    width: 730px;
+    height: 454px;
+    margin: 0;
+    padding: 0;
+}
+.tip{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+.tip li{
+    float: left;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #ccc;
+    text-align: center;
+    cursor: pointer;
+}
+.tip li.bg{
+    background-color: red;
+}
+.btnLeft{
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: 30px;
+    height: 45px;
+    background: url("../img/pre.png") no-repeat;
+
+}
+.btnRight{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 30px;
+    height: 45px;
+    background: url("../img/pre.png") no-repeat -50px 0;
+
+}
